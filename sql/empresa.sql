@@ -8,8 +8,13 @@ DROP TABLE IF EXISTS produto CASCADE;
 DROP TABLE IF EXISTS `user` CASCADE;
 
 CREATE TABLE `user` (
-    id_user INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    perfil ENUM('OPERADOR', 'ADMINISTRADOR') NOT NULL,
+    ativo TINYINT(1) DEFAULT 1,
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
 CREATE TABLE produto (
@@ -31,8 +36,9 @@ CREATE TABLE movimentacao (
     FOREIGN KEY (id_user) REFERENCES `user`(id_user)
 ) ENGINE=InnoDB;
 
-INSERT INTO `user` (nome) VALUES
-('Administrador');
+INSERT INTO user (nome, email, senha, perfil, ativo) VALUES
+('Administrador', 'adm@email.com', '$2y$10$DfF/CCXmW9qUh9rvtSyHp.vc5xmzy9ZpOQXI7CFPyA7iMXJHg4PB6', 'ADMINISTRADOR', 1),
+('João Oliveira', 'joao@email.com', '$2y$10$epU9Cq.IzkeI2gNEKrmHBu3bLS31LBM/XjQNNuHPMXuGtqVncZQPi', 'OPERADOR', 1);
 
 INSERT INTO produto (nome, quantidade_estoque, valor_unitario) VALUES
 ('Amaciante de roupas', 100, 0.50),
@@ -44,5 +50,3 @@ INSERT INTO movimentacao (tipo, quantidade, id_produto, datetime_movimentacao, i
 ('ENTRADA', 50, 1, NOW(), 1),
 ('SAIDA', 10, 1, NOW(), 1),
 ('SAIDA', 5, 2, NOW(), 1);
-
-select * from produto;

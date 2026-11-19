@@ -3,6 +3,8 @@ session_start();
 require_once __DIR__ . '/conexao.php';
 require_once __DIR__ . '/includes/menu.php';
 
+
+
 $sql = "SELECT
     (SELECT COUNT(*) FROM produto) AS produtos,
     (SELECT COALESCE(SUM(quantidade_estoque), 0) FROM produto) AS itens,

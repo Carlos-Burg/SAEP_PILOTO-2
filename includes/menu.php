@@ -37,4 +37,8 @@ $ativo = function ($prefixo) use ($pagina) {
             <a href="movimentacoes.php" class="nav-link <?= $ativo('movimentac') ?>">🔄 Movimentações</a>
             <a href="saidas.php"        class="nav-link <?= $ativo('saidas') ?>">📤 Saídas</a>
         </nav>
+
+        <footer class="text-white font-extrabold text-base">
+            <a href="sair.php"          class="nav-link <?=$ativo('SAIR') ?>"> SAIR</a>
+        </footer>
     </aside>
