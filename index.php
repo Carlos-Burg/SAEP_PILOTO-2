@@ -1,9 +1,6 @@
 <?php
-session_start();
-require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/config/conexao.php';
 require_once __DIR__ . '/includes/menu.php';
-
-
 
 $sql = "SELECT
     (SELECT COUNT(*) FROM produto) AS produtos,
@@ -18,6 +15,7 @@ $cards = [
     ["🔄", "Movimentações", $totais["movimentacoes"], "movimentacoes.php", "bg-senai-orange"],
     ["📤", "Saídas", $totais["saidas"], "saidas.php", "bg-senai-red"],
 ];
+
 ?>
     <main class="flex-1 flex flex-col">
 

@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/config/conexao.php';
 
 $st = $pdo->prepare("SELECT * FROM produto WHERE id_produto = :id");
 $st->execute(["id" => $_GET["id"] ?? 0]);

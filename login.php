@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/config/conexao.php';
 
 // Se logado, redireciona
 if (isset($_SESSION['usuario_id'])) {

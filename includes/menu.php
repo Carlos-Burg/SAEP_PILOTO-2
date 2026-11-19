@@ -39,6 +39,6 @@ $ativo = function ($prefixo) use ($pagina) {
         </nav>
 
         <footer class="text-white font-extrabold text-base">
-            <a href="sair.php"          class="nav-link <?=$ativo('SAIR') ?>"> SAIR</a>
+            <a href="sair.php"          class="nav-link <?=$ativo('SAIR') ?>">SAIR</a>
         </footer>
     </aside>

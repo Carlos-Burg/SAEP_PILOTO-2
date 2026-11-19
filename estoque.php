@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once __DIR__ . '/conexao.php';
+require_once __DIR__ . '/config/conexao.php';
 require_once __DIR__ . '/includes/menu.php';
 
 $produtos = $pdo->query("SELECT * FROM produto ORDER BY quantidade_estoque, nome")->fetchAll();
