@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/config/conexao.php';
 
+// Dados do usuário
+$nome = $_SESSION['usuario_nome'];
+$perfil = $_SESSION['perfil'];
+
 $sucesso = "";
 $erro = "";
 
@@ -89,7 +93,9 @@ $movimentacoes = $pdo->query($sql)->fetchAll();
                             <td class="px-4 py-3 text-center text-gray-600"><?= htmlspecialchars($m["usuario"] ?? "-") ?></td>
                             <td class="px-4 py-3 text-center">
                                 <div class="flex items-center justify-center gap-1.5">
-                                    <a onclick="return confirm('Tem certeza disso?')" class="bg-senai-red text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-red-700 transition" href="?excluir=<?= $m["id_movimentacao"] ?>">Excluir</a>
+                                    <?php if ($_SESSION['perfil'] === 'ADMINISTRADOR'): ?>
+                                        <a onclick="return confirm('Tem certeza disso?')" class="bg-senai-red text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-red-700 transition" href="?excluir=<?= $m["id_movimentacao"] ?>">Excluir</a>
+                                    <?php endif; ?>
                                 </div>
                             </td>
                         </tr>

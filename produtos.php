@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__ . '/config/conexao.php';
 
+// Dados do usuário
+$nome = $_SESSION['usuario_nome'];
+$perfil = $_SESSION['perfil'];
+
 $sucesso = "";
 $erro = "";
 
@@ -84,7 +88,9 @@ $produtos = $pdo->query("SELECT * FROM produto ORDER BY nome")->fetchAll();
                                 <div class="flex items-center justify-center gap-1.5">
                                     <a href="produto.php?id=<?= $p["id_produto"] ?>" class="bg-senai-blue text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-senai-blue-dark transition" title="Ver produto">🔍 Ver</a>
                                     <a href="movimentacao_form.php?id_produto=<?= $p["id_produto"] ?>" class="bg-yellow-500 text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-yellow-600 transition" title="Movimentar estoque">🔄 Movimentar</a>
-                                    <a onclick="return confirm('Tem certeza disso?')" class="bg-senai-red text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-red-700 transition" href="?excluir=<?= $p["id_produto"] ?>">Excluir</a>
+                                    <?php if ($_SESSION['perfil'] === 'ADMINISTRADOR'): ?>
+                                        <a onclick="return confirm('Tem certeza disso?')" class="bg-senai-red text-white text-xs px-2.5 py-1.5 rounded-md hover:bg-red-700 transition" href="?excluir=<?= $p["id_produto"] ?>">Excluir</a>
+                                    <?php endif; ?>
                                 </div>
                             </td>
                         </tr>
