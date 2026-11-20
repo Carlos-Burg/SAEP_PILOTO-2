@@ -36,6 +36,9 @@ $ativo = function ($prefixo) use ($pagina) {
             <a href="estoque.php"       class="nav-link <?= $ativo('estoque') ?>">📋 Verificar Estoque</a>
             <a href="movimentacoes.php" class="nav-link <?= $ativo('movimentac') ?>">🔄 Movimentações</a>
             <a href="saidas.php"        class="nav-link <?= $ativo('saidas') ?>">📤 Saídas</a>
+            <?php if ($_SESSION['perfil'] === 'ADMINISTRADOR'): ?>
+                <a href="usuarios.php"        class="nav-link <?= $ativo('usuarios') ?>">👤 Usuários</a>
+            <?php endif; ?>
         </nav>
 
         <footer class="text-white font-extrabold text-base">
