@@ -23,8 +23,8 @@
                         <input type="text" name="nome" class="form-input" required maxlength="100" placeholder="Nome Completo" value="<?= htmlspecialchars($nome) ?>">
                     </div>
                     <div class="mb-4">
-                        <label class="form-label">E-mail *</label>
-                        <input type="email" name="email" class="form-input" required min="0" step="1" placeholder="usuario@email.com" value="<?= htmlspecialchars($email) ?>">
+                        <label for="email">E-mail *</label>
+                        <input type="email" name="email" required placeholder="usuario@email.com" value="<?= htmlspecialchars($email) ?>">
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Senha *</label>
